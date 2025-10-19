@@ -1,7 +1,5 @@
 /* src/AudioPlayer.css */
 
-/* src/AudioPlayer.css */
-
 .audio-player-container {
   position: fixed;
   bottom: 15px;
@@ -14,6 +12,7 @@
   padding: 10px;
   border-radius: 15px;
   z-index: 9999;
+  flex-wrap: wrap; /* Allow items to wrap */
 
   /* Liquid Glass Style */
   background-color: rgba(255, 255, 255, 0.2);
@@ -78,7 +77,15 @@
   display: block;
 }
 
-.play-pause-button {
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+}
+
+.play-pause-button,
+.volume-button {
   background: rgba(255, 255, 255, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
@@ -94,23 +101,115 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
-.play-pause-button:hover {
+.play-pause-button:hover,
+.volume-button:hover {
   background: rgba(255, 255, 255, 0.4);
 }
 
-.play-pause-button:active {
+.play-pause-button:active,
+.volume-button:active {
   transform: scale(0.95);
 }
 
-.audio-progress-bar-container {
+.volume-control {
   position: absolute;
-  bottom: -2px; /* Position it just below the main container */
-  left: 0;
+  bottom: 60px; /* Position above the volume button */
+  right: 5px;
+  width: 50px;
+  height: 160px;
+  touch-action: none; /* Prevent page scroll on touch */
+  
+  /* Liquid Glass Style */
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Center items */
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 120px; /* This becomes the height of the slider */
+  height: 5px;  /* This becomes the width of the track */
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transform: rotate(-90deg); /* Rotate the slider to be vertical */
+  position: absolute; /* Position absolutely within the container */
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s;
+}
+
+.volume-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+.volume-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  position: absolute;
+  bottom: 10px;
+}
+
+.audio-progress-bar-container {
   width: 100%;
   height: 6px;
   background-color: rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 15px 15px; /* Match container radius */
-  overflow: hidden; /* Ensure progress bar stays within container bounds */
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 10px; /* Add space between controls and progress bar */
+  flex-basis: 100%; /* Make it take the full width */
 }
 
 .audio-progress-bar {
@@ -123,6 +222,6 @@
   width: 0%;
   transition: width 0.1s linear;
   box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
-  border-radius: 0 3px 3px 0;
+  border-radius: 3px;
 }
 
