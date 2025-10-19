@@ -1,0 +1,149 @@
+/* src/Bouquet.css */
+
+.bouquet-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  animation: bouquetAppear 2s ease-out;
+  height: 450px;
+}
+
+.bouquet-stems-wrapper {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: -70px; /* Reverted to original value */
+  z-index: 2;
+}
+
+.bouquet-stem {
+  position: absolute;
+  top: 0;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+  animation: stemSway 3s ease-in-out infinite;
+}
+
+/* Bó cành - Giấy gói */
+.bouquet-wrap {
+  position: relative;
+  width: 200px; /* Made bigger */
+  height: 180px; /* Made bigger */
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe8f0 50%, #ffd4eb 100%);
+  clip-path: polygon(15% 0, 85% 0, 65% 100%, 35% 100%); /* Creates a tapered, slim triangle shape */
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+  z-index: 10;
+}
+
+/* Ribbon decoration */
+.wrap-ribbon {
+  position: absolute;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  top: 40%;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
+}
+
+/* Ribbon bow */
+.ribbon-bow {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 60px;
+  z-index: 11;
+}
+
+.bow-left,
+.bow-right {
+  position: absolute;
+  width: 35px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff1493, #ff69b4);
+  border-radius: 50% 50% 0 50%;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.5);
+}
+
+.bow-left {
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.bow-right {
+  right: 0;
+  transform: rotate(45deg) scaleX(-1);
+}
+
+.bow-center {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, #ff1493, #ff69b4);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 8px rgba(255, 20, 147, 0.6);
+  z-index: 12;
+}
+
+/* Animations */
+@keyframes bouquetAppear {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes stemSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+}
+
+@keyframes wrapPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .bouquet-stems-wrapper {
+    width: 100%; /* Allow wrapper to be flexible */
+    height: 320px;
+    margin-bottom: 50px; /* Lowered for mobile view */
+    /* transform: scale(0.9); */ /* REMOVED - This was causing the misalignment */
+  }
+  
+  .bouquet-wrap {
+    width: 150px;
+    height: 160px; /* Increased height for better proportion */
+  }
+  
+  .ribbon-bow {
+    width: 70px;
+    height: 50px;
+  }
+}

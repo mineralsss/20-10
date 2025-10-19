@@ -1,0 +1,374 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd4eb 100%);
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #d946a6;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(217, 70, 166, 0.3);
+  animation: fadeInDown 1s ease-out;
+  font-family: 'Georgia', serif;
+  letter-spacing: 3px;
+}
+
+.message-box {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 700px;
+  box-shadow: 0 8px 32px rgba(217, 70, 166, 0.2);
+  animation: fadeIn 1.5s ease-out;
+  border: 2px solid rgba(255, 182, 223, 0.5);
+}
+
+.message {
+  font-size: 1.4rem;
+  color: #c2185b;
+  line-height: 2;
+  margin: 1rem 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.hydrangea-garden {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3rem;
+  margin: 3rem 0;
+  animation: fadeInUp 2s ease-out;
+}
+
+.hydrangea {
+  position: relative;
+  animation: sway 3s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hydrangea:nth-child(2) {
+  animation-delay: 0.5s;
+  transform: scale(1.1);
+}
+
+.hydrangea:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.stem {
+  width: 12px;
+  height: 160px;
+  background: linear-gradient(to right, #3d6647, #4a7c59, #5d9c6d);
+  border-radius: 6px;
+  position: relative;
+  box-shadow: inset -3px 0 5px rgba(0, 0, 0, 0.3), 
+              inset 2px 0 3px rgba(255, 255, 255, 0.2);
+  order: 2;
+}
+
+.stem-texture {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 15px,
+    rgba(0, 0, 0, 0.08) 15px,
+    rgba(0, 0, 0, 0.08) 16px
+  );
+}
+
+.flower-cluster {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin-bottom: -30px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
+  order: 1;
+}
+
+.flower-core {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #a8e0b0, #7ab987);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 25;
+}
+
+.hydrangea-floret {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  animation: flowerBreathe 4s ease-in-out infinite;
+}
+
+.floret-petals {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-10px) translateY(-10px);
+}
+
+.petal {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: radial-gradient(
+    ellipse at 25% 25%,
+    #ffe8f5 0%,
+    #ffd4eb 15%,
+    #ffc4e1 35%,
+    #ffb6d9 55%,
+    #ff99cc 75%,
+    #ff69b4 100%
+  );
+  border-radius: 45% 5% 45% 45%;
+  box-shadow: 
+    inset -1px -1px 2px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 105, 180, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+  top: 50%;
+  left: 50%;
+}
+
+.petal.p1 {
+  transform: translate(-50%, -100%) rotate(45deg);
+  transform-origin: 50% 100%;
+}
+
+.petal.p2 {
+  transform: translate(0%, -50%) rotate(135deg);
+  transform-origin: 0% 50%;
+}
+
+.petal.p3 {
+  transform: translate(-50%, 0%) rotate(225deg);
+  transform-origin: 50% 0%;
+}
+
+.petal.p4 {
+  transform: translate(-100%, -50%) rotate(315deg);
+  transform-origin: 100% 50%;
+}
+
+.floret-center {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #fff9e6, #ffe680);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 2px rgba(255, 230, 128, 0.9);
+  z-index: 10;
+}
+
+.leaf {
+  position: absolute;
+  width: 55px;
+  height: 80px;
+  background: linear-gradient(135deg, #5d9c6d 0%, #4a7c59 50%, #3d6647 100%);
+  border-radius: 50% 0 50% 50%;
+  box-shadow: 
+    inset -2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset 2px -2px 4px rgba(255, 255, 255, 0.2),
+    2px 2px 6px rgba(0, 0, 0, 0.2);
+  order: 2;
+  z-index: 1;
+}
+
+.leaf.left {
+  left: -15px;
+  top: 80px;
+  transform: rotate(-25deg);
+}
+
+.leaf.right {
+  right: -15px;
+  top: 80px;
+  transform: rotate(25deg) scaleX(-1);
+}
+
+.leaf-vein {
+  position: absolute;
+  width: 2px;
+  height: 70%;
+  background: linear-gradient(to bottom, 
+    rgba(61, 102, 71, 0.7), 
+    rgba(61, 102, 71, 0.3));
+  left: 20%;
+  top: 15%;
+  border-radius: 2px;
+}
+
+.leaf-vein::before,
+.leaf-vein::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 1px;
+  background: linear-gradient(to right, 
+    rgba(61, 102, 71, 0.5), 
+    transparent);
+  left: 0;
+}
+
+.leaf-vein::before {
+  top: 25%;
+  transform: rotate(-40deg);
+  transform-origin: left;
+}
+
+.leaf-vein::after {
+  top: 55%;
+  transform: rotate(-40deg);
+  transform-origin: left;
+}
+
+/* Cánh hoa rơi */
+.petal {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(
+    ellipse at 40% 40%,
+    #ffc4e1,
+    #ff8dc7
+  );
+  border-radius: 60% 40% 60% 40%;
+  animation: fall linear infinite;
+  opacity: 0.8;
+  z-index: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-message {
+  font-size: 1.8rem;
+  color: #d946a6;
+  margin-top: 3rem;
+  font-weight: bold;
+  animation: pulse 2s ease-in-out infinite;
+  text-shadow: 1px 1px 2px rgba(217, 70, 166, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes flowerBreathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.95;
+  }
+}
+
+@keyframes fall {
+  0% {
+    top: -10%;
+    transform: rotate(0deg);
+  }
+  100% {
+    top: 110%;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .message {
+    font-size: 1.1rem;
+  }
+
+  .hydrangea-garden {
+    gap: 1.5rem;
+    transform: scale(0.8);
+  }
+
+  .footer-message {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,39 @@
+/* src/Hydrangea.css */
+
+.hydrangea-cluster {
+  position: relative; /* Quan trọng: Để các floret có thể định vị tuyệt đối bên trong */
+  margin: 50px;
+}
+
+.stem {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 15px;
+  height: 150px;
+  background-color: #6b8e23; /* Màu xanh của cành */
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.leaf {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  background-color: #556b2f; /* Màu xanh của lá */
+  border-radius: 0 50%;
+  z-index: -1;
+}
+
+.leaf-1 {
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-120%) rotate(-30deg);
+}
+
+.leaf-2 {
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(20%) rotate(20deg);
+}

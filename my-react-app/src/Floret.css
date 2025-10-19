@@ -1,0 +1,38 @@
+/* src/Floret.css */
+
+.floret {
+  position: absolute; /* Quan trọng: để định vị tuyệt đối trong cụm hoa */
+  width: 20px;
+  height: 20px;
+}
+
+.floret .petal {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: currentColor; /* Lấy màu từ thuộc tính color của cha */
+  border-radius: 50% 0;
+  opacity: 0.8;
+}
+
+/* Sắp xếp 4 cánh hoa tạo thành hình bông hoa */
+.floret .petal:nth-child(1) {
+  top: 0;
+  left: 0;
+  transform: rotate(0deg);
+}
+.floret .petal:nth-child(2) {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg);
+}
+.floret .petal:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  transform: rotate(270deg);
+}
+.floret .petal:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
