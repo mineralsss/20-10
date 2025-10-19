@@ -24,7 +24,7 @@ const Card = () => {
         </p>
         
         <p className="card-message">
-          Nhưng anh làm ra trang web này để chúc em ngày 20/10 này và 20/10 của 
+          Anh làm ra trang web này để chúc em ngày 20/10 này và 20/10 của 
           <span className="highlight-text"> rất rất nhiều năm nữa</span> luôn 
           <span className="highlight-text"> xinh đẹp và tỏa sáng.</span>
         </p>
