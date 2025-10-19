@@ -82,7 +82,7 @@ const AudioPlayer = ({ src, songName, coverImage }) => {
 
   return (
     <div className="audio-player-container">
-      {showIndicator && <div className="play-indicator">✨ Tap to play ✨</div>}
+      {showIndicator && <div className="play-indicator">✨ Ấn vào đây để nghe nhạc ✨</div>}
       <img src={coverImage} alt={songName} className="audio-cover-image" />
       <div className="audio-controls-wrapper">
         <div className="song-info">
